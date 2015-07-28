@@ -63,14 +63,3 @@ The Build Out
 All fabric instances start at branch 1.0 (not master)!  So oldBranchName for a new fabric would be 1.0 with the branchName for the new branch being 1.1.  This will clone 1.0 and create a new branch 1.1 with the changes.  In fabric, wil will see a new version, 1.1 corresponding to the new branch.
 
 Done!
-	
-	
-	
-	cd
-This will deploy all 4 profiles.
-
-	fabric-broker-base-profile
-	fabric-redhat-broker1-profile
-	fabric-redhat-broker2-profile
-	fabric-redhat-broker-client-profile
-
