@@ -29,6 +29,7 @@
 	<groupId>org.mrobson.example.fabric8-amq</groupId>
 	<artifactId>broker-base</artifactId>
 	<packaging>pom</packaging>
+	<version>1.5</version>
 	<name>fabric8 AMQ :: Broker Base Profile</name>
 	<properties>
 		<fabric8.profile>mq-redhat</fabric8.profile>
@@ -44,5 +45,20 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<executions>
+				    <execution>
+					<id>zip</id>
+					<phase>package</phase>
+					<goals>
+					    <goal>zip</goal>
+					</goals>
+				    </execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

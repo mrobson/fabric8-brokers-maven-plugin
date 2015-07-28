@@ -1,0 +1,25 @@
+{
+  "profileId" : "org.mrobson.example.fabric8-amq-fabric-source-control-build",
+  "abstractProfile" : false,
+  "parentProfiles" : [ "containers-java" ],
+  "bundles" : [ "fab:mvn:org.mrobson.example.fabric8-amq/fabric-source-control-build/1.0-SNAPSHOT" ],
+  "minimumInstances" : 1,
+  "rootDependency" : {
+    "groupId" : "org.mrobson.example.fabric8-amq",
+    "artifactId" : "fabric-source-control-build",
+    "version" : "1.0-SNAPSHOT",
+    "type" : "jar",
+    "optional" : false,
+    "children" : [ {
+      "groupId" : "org.mrobson.example.fabric8-amq",
+      "artifactId" : "fabric-aggregated-zip",
+      "version" : "1.5",
+      "classifier" : "profile",
+      "type" : "zip",
+      "scope" : "compile",
+      "optional" : false
+    } ]
+  },
+  "webContextPath" : "fabric-source-control-build",
+  "useResolver" : true
+}

@@ -30,9 +30,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fabric8-maven-plugin-version>1.2.0.Beta4</fabric8-maven-plugin-version>
+		<fabric8-maven-plugin-version>1.2.0.redhat-133</fabric8-maven-plugin-version>
 	</properties>
 	<modules>
+		<module>fabric-aggregated-zip</module>
 		<module>fabric-broker-base-profile</module>
 		<module>fabric-redhat-broker1-profile</module>
 		<module>fabric-redhat-broker2-profile</module>
@@ -40,14 +41,64 @@
 		<module>fabric-redhat-broker-client-profile</module>
 	</modules>
 	<build>
-	<pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>fabric8-maven-plugin</artifactId>
-				<version>${fabric8-maven-plugin-version}</version>
-			</plugin>
-		</plugins>
-	</pluginManagement>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>fabric8-maven-plugin</artifactId>
+					<version>${fabric8-maven-plugin-version}</version>
+					<executions>
+					    <execution>
+						<id>zip</id>
+						<phase>package</phase>
+						<goals>
+						    <goal>zip</goal>
+						</goals>
+					    </execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>my-local-maven</id>
+			<name>Local Maven Repository</name>
+			<url>file:///home/mrobson/.m2/repository</url>
+		</repository>
+	</distributionManagement>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>fusesource.m2</id>
+			<name>FuseSource Community Release Repository</name>
+			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>fusesource.ea</id>
+			<name>FuseSource Community Early Access Release Repository</name>
+			<url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	<profiles>
+		<profile>
+		<id>fabric-source-control-build</id>
+			<modules>
+				<module>fabric-source-control-build</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

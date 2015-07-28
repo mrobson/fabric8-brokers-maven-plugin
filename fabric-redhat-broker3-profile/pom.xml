@@ -28,6 +28,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mrobson.example.fabric8-amq</groupId>
 	<artifactId>production-broker3</artifactId>
+	<version>1.5</version>
 	<packaging>pom</packaging>
 	<name>fabric8 AMQ :: Red Hat Broker 3 Detailed Config</name>
         <properties>
@@ -42,5 +43,20 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+                <plugins>                                                                                                                                                                                                               
+                        <plugin>                                                                                                                                                                                                        
+                                <groupId>io.fabric8</groupId>                                                                                                                                                                           
+                                <artifactId>fabric8-maven-plugin</artifactId>                                                                                                                                                           
+                                <executions>                                                                                                                                                                                            
+                                    <execution>                                                                                                                                                                                         
+                                        <id>zip</id>                                                                                                                                                                            
+                                        <phase>package</phase>                                                                                                                                                                          
+                                        <goals>                                                                                                                                                                                         
+                                            <goal>zip</goal>                                                                                                                                                                            
+                                        </goals>                                                                                                                                                                                        
+                                    </execution>                                                                                                                                                                                        
+                                </executions>                                                                                                                                                                                           
+                        </plugin>                                                                                                                                                                                                       
+                </plugins>
 	</build>
 </project>
