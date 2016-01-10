@@ -26,10 +26,10 @@
         </parent>
         <modelVersion>4.0.0</modelVersion>
 	<groupId>org.mrobson.example.fabric8-amq</groupId>
-        <artifactId>fabric-aggregated-zip</artifactId>
+        <artifactId>broker-fabric-aggregated-zip</artifactId>
 	<packaging>pom</packaging>
-	<version>1.5</version>
-	<name>fabric8 :: Zip Aggregator</name>
+	<version>1.0</version>
+	<name>fabric8 :: Network of Brokers Profile Zip Aggregator</name>
 	<build>
                 <plugins>
                         <plugin>

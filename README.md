@@ -4,7 +4,7 @@ Author: Matt Robson
 
 Technologies: Fuse, Fabric8, ActiveMQ, fabric8-maven-plugin, Profiles
 
-Product: Fuse 6.1, ActiveMQ 6.1
+Product: Fuse 6.2.1, ActiveMQ 6.2.1
 
 Breakdown                                                                                                                     
 ---------                                                                                                                     
@@ -19,9 +19,9 @@ For more information see:
 System Requirements
 -------------------
 Before building out your Fabric, you will need:
-* Java 1.7
-* JBoss Fuse 6.1
-* JBoss ActiveMQ 6.1
+* Java 1.7 or 1.8
+* JBoss Fuse 6.2.1
+* JBoss ActiveMQ 6.2.1
 
 Prerequisites
 -------------
@@ -38,27 +38,34 @@ The Build Out
 
         cd fabric8-brokers-maven-plugin
 
-3) build the projects - this will create all of the profiles, their individual zips as well as an aggregate zip in 'fabric-aggregated-zip'
+3) checkout out 6.2.1 and build the projects - this will create all of the profiles, their individual zips as well as an aggregate zip in 'fabric-aggregated-zip'
 
+	git checkout 6.2.1.084
 	mvn clean install
 
-4) change to to source control build directory
+4) build the aggregated zip of the project
 
-	cd fabric-source-control-build
+	mvn fabric8:zip
 
-5) edit the git url for your purposes - either commit directly to fabric or to an internal maven repository
+5) change to to source control build directory
+
+	cd broker-fabric-source-control-build
+
+6) edit the git url, oldBranchName and branchName for your purposes - either commit directly to fabric or to another git repository
 
 	vi pom.xml
 
-	<configuration>
-		<branchName>1.1</branchName>
-		<!-- Branch to a known GIT repository outside Fuse -->
-		<!--gitUrl>git@localhost.localdomain:prod/fabric8-git.git</gitUrl-->
-		<!-- Branch to the GIT repository in Fuse -->
-		<gitUrl>http://admin:admin@mrobson:8181/git/fabric</gitUrl>
-		<oldBranchName>1.0</oldBranchName>
-		<pushOnSuccess>true</pushOnSuccess>
-	</configuration>
+        <properties>                                                                                                                                                                                 
+                <fabric8.branch.branchName>1.1</fabric8.branch.branchName>
+                <fabric8.branch.gitUrl>http://admin:admin@fusefabric3.lab.com:8181/git/fabric</fabric8.branch.gitUrl>
+                <fabric8.branch.oldBranchName>1.0</fabric8.branch.oldBranchName>
+                <fabric8.branch.pushOnSuccess>true</fabric8.branch.pushOnSuccess>
+                <fabric8.branch.cloneAllBranches>true</fabric8.branch.cloneAllBranches>
+        </properties>
+
+7) branch and deploy the project to the specified git url
+
+	mvn fabric8:branch
 
 All fabric instances start at branch 1.0 (not master)!  So oldBranchName for a new fabric would be 1.0 with the branchName for the new branch being 1.1.  This will clone 1.0 and create a new branch 1.1 with the changes.  In fabric, wil will see a new version, 1.1 corresponding to the new branch.
 

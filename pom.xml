@@ -30,10 +30,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<fabric8-maven-plugin-version>1.2.0.redhat-133</fabric8-maven-plugin-version>
+		<fabric8-maven-plugin-version>1.2.0.redhat-621084</fabric8-maven-plugin-version>
 	</properties>
 	<modules>
-		<module>fabric-aggregated-zip</module>
+		<module>broker-fabric-aggregated-zip</module>
 		<module>fabric-broker-base-profile</module>
 		<module>fabric-redhat-broker1-profile</module>
 		<module>fabric-redhat-broker2-profile</module>
@@ -60,39 +60,71 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<distributionManagement>
-		<repository>
-			<id>my-local-maven</id>
-			<name>Local Maven Repository</name>
-			<url>file:///home/mrobson/.m2/repository</url>
-		</repository>
-	</distributionManagement>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>fusesource.m2</id>
-			<name>FuseSource Community Release Repository</name>
-			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
+			<name>FuseSource Repository</name>
+			<url>http://repo.fusesource.com/nexus/content/groups/public</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
 			<releases>
 				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-		</pluginRepository>
-		<pluginRepository>
-			<id>fusesource.ea</id>
-			<name>FuseSource Community Early Access Release Repository</name>
-			<url>https://repo.fusesource.com/nexus/content/groups/ea</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>fusesource.m2</id>
+			<name>FuseSource Repository</name>
+			<url>http://repo.fusesource.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>fusesource.releases</id>
+			<name>FuseSource Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/fs-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>fusesource.ea</id>
+			<name>FuseSource Early Access Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>maven.m2</id>
+			<name>Maven central Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+        <distributionManagement>
+                <repository>
+                        <id>fabric-upload</id>
+			<url>file:///home/mrobson/maven/</url>
+                </repository>
+        </distributionManagement>
 	<profiles>
 		<profile>
 		<id>fabric-source-control-build</id>

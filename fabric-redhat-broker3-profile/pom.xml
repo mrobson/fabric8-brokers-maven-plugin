@@ -28,13 +28,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mrobson.example.fabric8-amq</groupId>
 	<artifactId>production-broker3</artifactId>
-	<version>1.5</version>
 	<packaging>pom</packaging>
 	<name>fabric8 AMQ :: Red Hat Broker 3 Detailed Config</name>
         <properties>
 		<fabric8.profile>mq-broker-redHatBrokerNetwork.redhat-broker3</fabric8.profile>
 		<fabric8.parentProfiles>mq-redhat</fabric8.parentProfiles>
-		<fabric8.profileVersion>1.5</fabric8.profileVersion>
+		<!--fabric8.baseVersion>1.0</fabric8.baseVersion>
+		<fabric8.profileVersion>1.0</fabric8.profileVersion-->
         </properties>
 	<build>
 		<resources>
@@ -43,20 +43,20 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-                <plugins>                                                                                                                                                                                                               
-                        <plugin>                                                                                                                                                                                                        
-                                <groupId>io.fabric8</groupId>                                                                                                                                                                           
-                                <artifactId>fabric8-maven-plugin</artifactId>                                                                                                                                                           
-                                <executions>                                                                                                                                                                                            
-                                    <execution>                                                                                                                                                                                         
-                                        <id>zip</id>                                                                                                                                                                            
-                                        <phase>package</phase>                                                                                                                                                                          
-                                        <goals>                                                                                                                                                                                         
-                                            <goal>zip</goal>                                                                                                                                                                            
-                                        </goals>                                                                                                                                                                                        
-                                    </execution>                                                                                                                                                                                        
-                                </executions>                                                                                                                                                                                           
-                        </plugin>                                                                                                                                                                                                       
-                </plugins>
+		<plugins>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-maven-plugin</artifactId>
+				<executions>
+				    <execution>
+					<id>zip</id>
+					<phase>package</phase>
+					<goals>
+					    <goal>zip</goal>
+					</goals>
+				    </execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>
